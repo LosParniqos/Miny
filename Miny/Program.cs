@@ -13,6 +13,8 @@ namespace Miny
             int[,] HraciPole = new int[x, y];
 
 
+            Generace();
+            logika();
 
 
             void Generace()
@@ -30,21 +32,28 @@ namespace Miny
 
             void logika()
             {
-                for (int j = 1; j < sirka - 1; j++)
+                for (int j = 0; j < x; j++)
                 {
-                    for (int i = 1; i < delka - 1; i++)
+                    for (int i = 0; i < y; i++)
                     {
-                        int sousedi = 0;
-                        for (int x = -1; x != 2; x++)
+                        if (HraciPole[j, i] != 9)
                         {
-                            for (int y = -1; y != 2; y++)
+                            int sousedi = 0;
+                            for (int x = -1; x != 2; x++)
                             {
-                                if ((bakterie[j + x, i + y] == 1) && !(x == 0 && y == 0))
+                                for (int y = -1; y != 2; y++)
                                 {
-                                    sousedi++;
+                                    if (j + x > -1 && j + x < 11 && i + j > -1 && i + j < 11)
+                                    {
+                                        if (HraciPole[j + x, i + j] == 9)
+                                        {
+                                            sousedi++;
+                                        }
+                                    }
                                 }
+
                             }
-                        
+                            HraciPole[x, j] = sousedi;
                         }
                     };
                 };
