@@ -15,6 +15,7 @@ namespace Miny
 
             Generace();
             logika();
+            Vypis();
 
 
             void Generace()
@@ -39,13 +40,13 @@ namespace Miny
                         if (HraciPole[j, i] != 9)
                         {
                             int sousedi = 0;
-                            for (int x = -1; x != 2; x++)
+                            for (int k = -1; k != 2; k++)
                             {
-                                for (int y = -1; y != 2; y++)
+                                for (int l = -1; l != 2; l++)
                                 {
-                                    if (j + x > -1 && j + x < 11 && i + j > -1 && i + j < 11)
+                                    if (j + k >=0 && j + k < x && i + l >=0 && i + l <y)
                                     {
-                                        if (HraciPole[j + x, i + j] == 9)
+                                        if (HraciPole[j + k, i + l] == 9)
                                         {
                                             sousedi++;
                                         }
@@ -53,16 +54,24 @@ namespace Miny
                                 }
 
                             }
-                            HraciPole[x, j] = sousedi;
+                            HraciPole[j, i] = sousedi;
                         }
                     };
                 };
-            }
+            };
 
 
-
-
-
+            void Vypis()
+            {
+                for (int j = 0; j < x; j++)
+                {
+                    for (int i = 0; i < y; i++)
+                    {
+                        Console.Write(HraciPole[j, i]);
+                    }
+                    Console.WriteLine();
+                }
+            }    
         }
     }
 }
