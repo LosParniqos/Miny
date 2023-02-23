@@ -13,9 +13,12 @@ namespace Miny
             int[,] HraciPole = new int[x, y];
 
 
+
             Generace();
             logika();
             Inicializace();
+            Vypis();
+            Zadavani();
             Vypis();
 
 
@@ -64,6 +67,7 @@ namespace Miny
 
             void Vypis()
             {
+                Console.Clear();
                 Console.Write(" |");
                 for (int a = 0; a < x; a++)
                 {
@@ -100,6 +104,25 @@ namespace Miny
                             HraciPole[i, j] = 10;
                         }
                     }
+                }
+            }
+            void Zadavani()
+            {
+                Console.WriteLine("Napiš souřadnici X:");
+                int UserX = Int32.Parse(Console.ReadLine());
+                Console.WriteLine("Napiš souřadnici Y:");
+                int UserY = Int32.Parse(Console.ReadLine());
+                Odkryvani(UserX,UserY);
+            }
+            void Odkryvani(int UserX, int UserY)
+            {
+                if (HraciPole[UserX, UserY] == 10)
+                {
+                    HraciPole[UserX, UserY] = 0;
+                }
+                else
+                {
+                    HraciPole[UserX, UserY] *= -1;
                 }
             }
             void Rekurze()
