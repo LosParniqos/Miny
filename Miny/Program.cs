@@ -15,6 +15,7 @@ namespace Miny
 
             Generace();
             logika();
+            Inicializace();
             Vypis();
 
 
@@ -63,15 +64,48 @@ namespace Miny
 
             void Vypis()
             {
+                Console.Write(" |");
+                for (int a = 0; a < x; a++)
+                {
+
+                    Console.Write(a.ToString().PadLeft(3));
+                }
+                Console.WriteLine("\n-+--------------------------------------");
+                for (int j = 0; j < x; j++)
+                {
+                    Console.Write(j+"|");
+                    for (int i = 0; i < y; i++)
+                    {
+                        if (HraciPole[j, i] < 0 || HraciPole[j, i] ==10)
+                        {
+                            Console.Write("X".PadLeft(3));
+                        }
+                        else
+                        {
+                            Console.Write(HraciPole[j, i].ToString().PadLeft(3));
+                        }
+                    }
+                    Console.WriteLine();
+                }
+            } 
+            void Inicializace()
+            {
                 for (int j = 0; j < x; j++)
                 {
                     for (int i = 0; i < y; i++)
                     {
-                        Console.Write(HraciPole[j, i]);
+                        HraciPole[j, i] = HraciPole[j, i] * (-1);
+                        if (HraciPole[i, j] == 0)
+                        {
+                            HraciPole[i, j] = 10;
+                        }
                     }
-                    Console.WriteLine();
                 }
-            }    
+            }
+            void Rekurze()
+            {
+                
+            }
         }
     }
 }
