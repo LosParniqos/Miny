@@ -124,11 +124,63 @@ namespace Miny
                 {
                     HraciPole[UserX, UserY] *= -1;
                 }
+                Rekurze(UserX, UserY);
             }
-            void Rekurze()
+            void Rekurze(int UserX,int UserY )
             {
+                int j = UserX;
+                int i = UserY;
+                            if (HraciPole[j, i] == 0)
+                            { 
+                                for (int k = -1; k < 2; k++)
+                                {
+                                    for (int l = -1; l < 2; l++)
+                                    {
+                                        if (j + k >= 0 && j + k < x && i + l >= 0 && i + l < y)
+                                        {
+                                            HraciPole[j + k, i + l] *= (-1);
+                                            if (HraciPole[j + k, i + l] == -10)
+                                            {
+                                                  HraciPole[j + k, i + l] = 0;
+
+                                                   Rekurze(UserX = j + k, UserY = i + l);
+
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
                 
             }
+            /*void Rekurze2()
+            {
+                {
+                    for (int j = 0; j < x; j++)
+                    {
+                        for (int i = 0; i < y; i++)
+                        {
+                            if (HraciPole[j, i] == 0)
+                            {
+                                for (int k = -1; k != 2; k++)
+                                {
+                                    for (int l = -1; l != 2; l++)
+                                    {
+                                        if (j + k >= 0 && j + k < x && i + l >= 0 && i + l < y)
+                                        {
+                                            if (HraciPole[j + k, i + l] < 0 || HraciPole[j + k, i + l] ==10)
+                                            {
+                                                HraciPole[j + k, i + l] *= (-1);
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        };
+                    };
+                }
+            }*/
         }
     }
 }
